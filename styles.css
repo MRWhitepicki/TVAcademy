@@ -172,3 +172,7 @@ body[data-theme="dark"] .product-gallery-item{background:#11101d;border-color:#3
 /* Keep every product illustration inside its neon-bordered gallery column */
 .product-gallery,.product-gallery-item,.product-gallery-item img{min-width:0;max-width:100%}
 @media(min-width:761px){.product-gallery-item img{height:220px;max-height:220px;object-fit:contain}}
+
+
+/* Match the M7 desktop gallery scale to the H55 card without changing mobile */
+@media(min-width:761px){.product-gallery-m7 .product-gallery-item img{height:160px;max-height:160px;padding:16px;object-fit:contain;box-sizing:border-box}}
