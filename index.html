@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f8ff">
+  <meta name="description" content="TV ACADEMY — интерактивная академия технологий телевизоров для продавцов-консультантов.">
+  <title>TV ACADEMY — Академия технологий телевизоров</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="home">
+        <span class="brand-mark">TV</span><span><b>TV ACADEMY</b><small>АКАДЕМИЯ ТЕХНОЛОГИЙ</small></span>
+      </a>
+      <div class="side-caption">ОБУЧЕНИЕ</div>
+      <nav class="side-nav">
+        <button class="nav-link active" data-page="home"><span>⌂</span> Главная</button>
+        <button class="nav-link" data-page="learn"><span>▤</span> Обучение</button>
+        <button class="nav-link" data-page="catalog"><span>▣</span> Каталог телевизоров</button>
+        <button class="nav-link" data-page="compare"><span>⇄</span> Сравнение</button>
+        <button class="nav-link" data-page="exam"><span>✳</span> Экзамены</button>
+        <button class="nav-link" data-page="practice"><span>◎</span> Практика продаж</button>
+        <button class="nav-link" data-page="library"><span>▧</span> Энциклопедия</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-progress"><div class="mini-progress-head"><span>Твой прогресс</span><b id="side-progress">0%</b></div><div class="progress-track"><i id="side-progress-bar"></i></div><small>Продолжай обучение каждый день</small></div>
+        <button class="profile-mini" id="edit-profile"><span class="avatar" id="avatar">У</span><span><b id="side-name">Ученик</b><small>Мой профиль</small></span><span class="dots">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Открыть меню">☰</button>
+        <div class="breadcrumbs"><span>TV ACADEMY</span><i>/</i><b id="crumb">Главная</b></div>
+        <div class="top-actions"><span class="date-chip" id="today"></span><button class="icon-btn" id="top-profile" aria-label="Профиль">♙</button></div>
+      </header>
+      <div class="content" id="content"></div>
+      <footer>TV ACADEMY <span>·</span> Учись понимать технологии, а не просто запоминать характеристики.</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="welcome-modal">
+    <div class="welcome-card">
+      <div class="welcome-logo">TV<span>.</span></div>
+      <div class="eyebrow">ТВОЯ ПРОФЕССИОНАЛЬНАЯ ПЛАТФОРМА</div>
+      <h1>Добро пожаловать<br>в <span>TV ACADEMY</span></h1>
+      <p>Осваивай технологии телевизоров, тренируй навыки продаж и отслеживай свой профессиональный рост.</p>
+      <label for="welcome-name">Как тебя зовут?</label>
+      <input id="welcome-name" maxlength="32" autocomplete="given-name" placeholder="Введи своё имя">
+      <button class="primary-btn full" id="start-btn">Начать обучение <span>→</span></button>
+      <small>Имя и учебный прогресс сохраняются в этом браузере.</small>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
