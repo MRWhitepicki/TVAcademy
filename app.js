@@ -88,11 +88,12 @@ function renderModule(i){const m=modules[i];const contentMap={
 11:['Уточни расстояние до экрана, освещение комнаты, положение зрителей и основной контент.','Для игр важны задержка, VRR, поддерживаемые режимы HDMI и нативная частота. Для кино — контраст, HDR и равномерность.']
 };const points=contentMap[i]||['Изучай характеристики конкретной модели и подтверждай их по официальной документации.'];return shellTitle(m[1],m[2])+`<div class="panel"><div class="eyebrow">УЧЕБНЫЙ МАТЕРИАЛ</div><h2 style="font-size:19px;margin:0 0 15px">${m[1]}</h2>${points.map((p,j)=>`<div class="objection"><b>${['Ключевой принцип','Что важно понимать','Практический вывод'][j%3]}</b><p>${p}</p></div>`).join('')}<button class="primary-btn" id="complete-module" data-id="${i}">${state.completed.includes(i)?'Тема уже пройдена':'Отметить тему как пройденную'} <span>✓</span></button> <button class="secondary-btn" data-go="learn">К списку тем</button></div>`}
 function renderCatalog(){return shellTitle('Каталог телевизоров','Нажми на изображение телевизора или кнопку характеристик, чтобы открыть подробную карточку модели.')+`<div class="filter-row"><button class="filter-chip active">Все модели</button><button class="filter-chip">Haier</button><button class="filter-chip">Mini LED</button><button class="filter-chip">QLED</button></div><div class="catalog-grid">${catalog.map((p,i)=>`<article class="product-card" data-product="${i}" tabindex="0" aria-label="Открыть карточку: ${p.name}"><div class="product-visual ${i===0?'product-visual-s85':''}"><img src="${p.image}" alt="${p.name}" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="tv-shape" style="display:none"></div><span class="photo-open-hint">Открыть модель ↗</span></div><div class="photo-credit"><a href="${p.imageSource}" target="_blank" rel="noopener noreferrer">Источник фото ↗</a></div><div class="product-body"><span class="tag">${p.series}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="spec-pills">${p.spec.map(s=>`<span>${s}</span>`).join('')}</div><div class="product-actions"><small>Карточка конкретной модификации</small><button type="button">Характеристики →</button></div></div></article>`).join('')}</div><p class="compare-note">Дополнительные изображения и схемы технологий собраны в карточке каждой модели. Источники указаны под изображениями.</p>`}
-function renderProduct(i){const p=catalog[i];return shellTitle(p.name,`${p.series} · ${p.size} · отдельная карточка модификации`)+`<div class="panel"><div class="eyebrow">ХАРАКТЕРИСТИКИ МОДЕЛИ</div><div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap"><div><div class="product-visual" style="width:280px;border-radius:13px"><img src="${p.image}" alt="${p.name}" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="tv-shape" style="display:none"></div></div><div class="photo-credit"><a href="${p.imageSource}" target="_blank" rel="noopener noreferrer">Источник основного фото ↗</a></div></div><div style="flex:1;min-width:220px"><h2 style="font-size:20px">${p.name}</h2><p class="page-lead">${p.desc}</p><span class="tag">${p.series}</span></div></div><div class="section-head"><div><h2>Основные характеристики</h2><p>Данные для выбранной диагонали</p></div></div><table class="compare-table">${p.details.map(d=>`<tr><td>${d[0]}</td><td>${d[1]}</td></tr>`).join('')}</table><div class="section-head"><div><h2>Технологии и дополнительные изображения</h2><p>Иллюстрации функций и особенностей этой модели</p></div></div><div class="product-gallery">${(p.gallery||[]).map((g,j)=>`<figure class="product-gallery-item" data-gallery-product="${i}" data-gallery-index="${j}"><img src="${g.src}" alt="${p.name}: ${g.title}" loading="lazy" decoding="async" onerror="this.closest('figure').style.display='none'"><figcaption><b>${g.title}</b><span>${g.note}</span></figcaption></figure>`).join('')}</div><p class="compare-note">Перед публикацией коммерческой карточки характеристики должны быть сверены с официальной документацией именно этой модификации. Дополнительные иллюстрации не заменяют техническую спецификацию.</p><button class="secondary-btn" data-go="catalog">← Вернуться в каталог</button></div>`}
+function renderProduct(i){const p=catalog[i];return shellTitle(p.name,`${p.series} · ${p.size} · отдельная карточка модификации`)+`<div class="panel"><div class="eyebrow">ХАРАКТЕРИСТИКИ МОДЕЛИ</div><div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap"><div><div class="product-visual" style="width:280px;border-radius:13px;cursor:zoom-in" data-gallery-product="${i}" data-gallery-index="0" role="button" tabindex="0" aria-label="Открыть галерею фотографий ${p.name}"><img src="${p.image}" alt="${p.name}" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="tv-shape" style="display:none"></div></div><div class="photo-credit"><a href="${p.imageSource}" target="_blank" rel="noopener noreferrer">Источник основного фото ↗</a></div></div><div style="flex:1;min-width:220px"><h2 style="font-size:20px">${p.name}</h2><p class="page-lead">${p.desc}</p><span class="tag">${p.series}</span></div></div><div class="section-head"><div><h2>Основные характеристики</h2><p>Данные для выбранной диагонали</p></div></div><table class="compare-table">${p.details.map(d=>`<tr><td>${d[0]}</td><td>${d[1]}</td></tr>`).join('')}</table><div class="section-head"><div><h2>Технологии и дополнительные изображения</h2><p>Иллюстрации функций и особенностей этой модели</p></div></div><div class="product-gallery">${(p.gallery||[]).map((g,j)=>`<figure class="product-gallery-item" data-gallery-product="${i}" data-gallery-index="${j+1}"><img src="${g.src}" alt="${p.name}: ${g.title}" loading="lazy" decoding="async" onerror="this.closest('figure').style.display='none'"><figcaption><b>${g.title}</b><span>${g.note}</span></figcaption></figure>`).join('')}</div><p class="compare-note">Перед публикацией коммерческой карточки характеристики должны быть сверены с официальной документацией именно этой модификации. Дополнительные иллюстрации не заменяют техническую спецификацию.</p><button class="secondary-btn" data-go="catalog">← Вернуться в каталог</button></div>`}
 
+function getProductImages(product){return [{src:product.image,title:'Основное фото телевизора',note:'Главное изображение модели'},...(product.gallery||[])];}
 let galleryViewer=null;
 function openGalleryViewer(productIndex,imageIndex){
- const product=catalog[productIndex], images=product&&product.gallery;
+ const product=catalog[productIndex], images=product&&getProductImages(product);
  if(!images||!images.length)return;
  galleryViewer={productIndex,index:Math.max(0,Math.min(imageIndex,images.length-1))};
  const viewer=document.createElement('div');
@@ -113,19 +114,19 @@ function openGalleryViewer(productIndex,imageIndex){
 }
 function updateGalleryViewer(){
  if(!galleryViewer)return;
- const product=catalog[galleryViewer.productIndex],item=product.gallery[galleryViewer.index],viewer=document.querySelector('.gallery-viewer');
+ const product=catalog[galleryViewer.productIndex],item=getProductImages(product)[galleryViewer.index],viewer=document.querySelector('.gallery-viewer');
  if(!viewer)return;
  const img=viewer.querySelector('.gallery-viewer-image');
  img.src=item.src;img.alt=product.name+': '+item.title;
  viewer.querySelector('.gallery-viewer-caption b').textContent=item.title;
  viewer.querySelector('.gallery-viewer-caption span').textContent=item.note||'';
- viewer.querySelector('.gallery-viewer-caption small').textContent=(galleryViewer.index+1)+' / '+product.gallery.length;
+ viewer.querySelector('.gallery-viewer-caption small').textContent=(galleryViewer.index+1)+' / '+getProductImages(product).length;
  viewer.querySelector('.gallery-viewer-prev').disabled=product.gallery.length<2;
  viewer.querySelector('.gallery-viewer-next').disabled=product.gallery.length<2;
 }
 function moveGalleryViewer(direction){
  if(!galleryViewer)return;
- const total=catalog[galleryViewer.productIndex].gallery.length;
+ const total=getProductImages(catalog[galleryViewer.productIndex]).length;
  galleryViewer.index=(galleryViewer.index+direction+total)%total;
  updateGalleryViewer();
 }
@@ -161,12 +162,14 @@ $('#mobile-menu').addEventListener('click',()=>$('#sidebar').classList.toggle('o
 content.addEventListener('click',e=>{if(e.target.id==='next-question'){quizIndex++;renderQuiz()}if(e.target.id==='retry-exam')beginExam()});
 
 content.addEventListener('click',e=>{
- const galleryItem=e.target.closest('.product-gallery-item[data-gallery-product]');
+ const galleryItem=e.target.closest('[data-gallery-product][data-gallery-index]');
  if(galleryItem){openGalleryViewer(+galleryItem.dataset.galleryProduct,+galleryItem.dataset.galleryIndex);return}
  const card=e.target.closest('.product-card[data-product]');
  if(card&&!e.target.closest('a')){content.innerHTML=renderProduct(+card.dataset.product);content.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.go)));window.scrollTo({top:0,behavior:'smooth'});return}
 });
 content.addEventListener('keydown',e=>{
+ const galleryTrigger=e.target.closest('[data-gallery-product][data-gallery-index]');
+ if(galleryTrigger&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openGalleryViewer(+galleryTrigger.dataset.galleryProduct,+galleryTrigger.dataset.galleryIndex);return}
  const card=e.target.closest('.product-card[data-product]');
  if(card&&e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();content.innerHTML=renderProduct(+card.dataset.product);content.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.go)));window.scrollTo({top:0,behavior:'smooth'})}
 });
