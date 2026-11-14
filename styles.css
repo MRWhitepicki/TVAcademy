@@ -171,5 +171,4 @@ body[data-theme="dark"] .product-gallery-item{background:#11101d;border-color:#3
 
 /* Keep every product illustration inside its neon-bordered gallery column */
 .product-gallery,.product-gallery-item,.product-gallery-item img{min-width:0;max-width:100%}
-.product-gallery-item img{height:220px;max-height:220px;object-fit:contain}
-@media(max-width:760px){.product-gallery-item img{height:190px;max-height:190px}}
+@media(min-width:761px){.product-gallery-item img{height:220px;max-height:220px;object-fit:contain}}
