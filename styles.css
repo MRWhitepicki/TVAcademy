@@ -108,3 +108,7 @@ body[data-theme="dark"]:not(.no-glow) .profile-panel:focus-within{border-color:#
 .product-visual .tv-shape{display:none}
 body[data-theme="dark"] .product-visual{background:#f7f8fb}
 @media(max-width:760px){.product-visual{height:190px}.product-visual img{padding:8px}}
+
+.photo-credit{padding:0 14px 8px;text-align:right;font-size:9px;color:#8490a5}
+.photo-credit a{color:#7186c9;text-decoration:none}
+.photo-credit a:hover{text-decoration:underline}
