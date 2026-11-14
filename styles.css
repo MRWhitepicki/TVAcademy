@@ -48,3 +48,56 @@ body.no-animations *,body.no-animations *:before,body.no-animations *:after{anim
 .profile-stats{margin:15px 0}
 body[data-theme="light"]{color-scheme:light}
 @media(max-width:760px){.setting-row{align-items:flex-start}.setting-select{min-width:125px}.settings-section,.profile-panel{padding:16px}}
+
+
+/* Dark theme polish: readable controls, tables and exam states */
+body[data-theme="dark"] .compare-table th,
+body[data-theme="dark"] .compare-table td{border-color:#302744;color:#d8d1eb}
+body[data-theme="dark"] .compare-table th,
+body[data-theme="dark"] .compare-table td:first-child{color:#a99fc4}
+body[data-theme="dark"] .result-score{color:#c084fc}
+body[data-theme="dark"] .quiz-top,
+body[data-theme="dark"] .quiz-bottom small,
+body[data-theme="dark"] .compare-note{color:#a99fc4}
+body[data-theme="dark"] .quiz-progress{background:#2b243a}
+body[data-theme="dark"] .answer .letter{background:#302744;color:#d8c9f5}
+body[data-theme="dark"] .filter-chip{border-color:#342a49}
+body[data-theme="dark"] .filter-chip.active,
+body[data-theme="dark"] .level-card.active{background:#28183b;border-color:#a855f7;color:#f0d9ff;box-shadow:0 0 0 1px #9333ea55}
+body[data-theme="dark"] .objection button{background:#28183b;color:#e0b8ff}
+body[data-theme="dark"] .empty-state{background:#11101d;border-color:#423456;color:#aaa3c4}
+body[data-theme="dark"] .stat-icon,
+body[data-theme="dark"] .module-icon,
+body[data-theme="dark"] .lesson-icon{background:#241a36;color:#d0a7ff}
+body[data-theme="dark"] .continue-row,
+body[data-theme="dark"] .product-actions{border-color:#302744}
+body[data-theme="dark"] .profile-mini:hover{background:#1a1428;border-radius:10px}
+body[data-theme="dark"] .switch span{background:#51465f}
+body[data-theme="dark"] .danger-section{border-color:#673047}
+body[data-theme="dark"] .danger-btn{background:#351725;border-color:#a94c69;color:#ffc0d0}
+body[data-theme="dark"] input,
+body[data-theme="dark"] select{color-scheme:dark}
+body[data-theme="dark"] .primary-btn:focus-visible,
+body[data-theme="dark"] .secondary-btn:focus-visible,
+body[data-theme="dark"] button:focus-visible,
+body[data-theme="dark"] input:focus-visible,
+body[data-theme="dark"] select:focus-visible{outline:2px solid #c084fc;outline-offset:3px}
+
+/* Optional violet neon accents */
+body[data-theme="dark"]:not(.no-glow) .primary-btn{box-shadow:0 0 18px #9333ea55,0 8px 22px #0008}
+body[data-theme="dark"]:not(.no-glow) .nav-link.active{box-shadow:inset 0 0 18px #9333ea22,0 0 16px #9333ea22}
+body[data-theme="dark"]:not(.no-glow) .module-card:hover,
+body[data-theme="dark"]:not(.no-glow) .product-card:hover,
+body[data-theme="dark"]:not(.no-glow) .stat-card:hover{border-color:#8b5cf6;box-shadow:0 0 22px #9333ea30,0 16px 34px #0008}
+body[data-theme="dark"]:not(.no-glow) .brand-mark{box-shadow:0 0 18px #9333ea66}
+body[data-theme="dark"]:not(.no-glow) .settings-section:focus-within,
+body[data-theme="dark"]:not(.no-glow) .profile-panel:focus-within{border-color:#8b5cf6;box-shadow:0 0 18px #9333ea22}
+
+@media(max-width:480px){
+  .setting-row{gap:10px}
+  .setting-row>div{min-width:0;flex:1}
+  .setting-select{max-width:145px;min-width:0;font-size:10px;padding:9px 7px}
+  .setting-row small{max-width:220px;line-height:1.5}
+  .profile-heading h2{font-size:16px}
+  .profile-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
