@@ -43,7 +43,7 @@ function playUiSound(){if(!settings.sound)return;try{const C=window.AudioContext
 let currentPage='home', selectedLevel=0, quiz=null, quizIndex=0, quizAnswers=[], answered=false, selectedCategory='Все';
 function save(){localStorage.setItem('tvAcademyState',JSON.stringify(state));updateProgress()}
 function updateProgress(){const p=Math.min(100,Math.round(state.completed.length/modules.length*100));$('#side-progress').textContent=p+'%';$('#side-progress-bar').style.width=p+'%';}
-function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+function toast(t){playUiSound();const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
 function welcome(){if(!state.name){$('#welcome-modal').classList.add('show')}else{syncProfile()}}
 function syncProfile(){const n=state.name||'Ученик';$('#side-name').textContent=n;$('#avatar').textContent=n[0].toUpperCase();$('#welcome-modal').classList.remove('show');updateProgress()}
 function start(){const n=$('#welcome-name').value.trim();if(!n){toast('Введи имя, чтобы продолжить');return}state.name=n;save();syncProfile();render()}
