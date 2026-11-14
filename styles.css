@@ -113,5 +113,4 @@ body[data-theme="dark"] .product-visual{background:#f7f8fb}
 .photo-credit a{color:#7186c9;text-decoration:none}
 .photo-credit a:hover{text-decoration:underline}
 
-/* Keep square source photos at their natural aspect ratio on desktop catalog cards */
-@media(min-width:761px){.catalog-grid .product-visual img{width:auto;max-width:100%;height:100%;object-fit:contain;object-position:center center}}
+/* Desktop and mobile catalog photos use the same contain sizing rule. */
