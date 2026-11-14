@@ -97,3 +97,5 @@ $('#mobile-menu').addEventListener('click',()=>$('#sidebar').classList.toggle('o
 content.addEventListener('click',e=>{if(e.target.id==='next-question'){quizIndex++;renderQuiz()}if(e.target.id==='retry-exam')beginExam()});
 $('#today').textContent=new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long'}).format(new Date());
 applySettings();welcome();render();
+const systemThemeQuery=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+if(systemThemeQuery){const syncSystemTheme=()=>{if(settings.theme==='system')applySettings()};if(systemThemeQuery.addEventListener)systemThemeQuery.addEventListener('change',syncSystemTheme);else if(systemThemeQuery.addListener)systemThemeQuery.addListener(syncSystemTheme)}
