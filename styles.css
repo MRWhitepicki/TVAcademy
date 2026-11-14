@@ -125,3 +125,18 @@ body[data-theme="dark"] .product-visual{background:#f7f8fb}
 
 /* Desktop-only: zoom the actual TV inside the fixed S85 image frame. */
 @media(min-width:761px){.catalog-grid .product-visual-s85 img{transform:scale(1.35);transform-origin:center center;}}
+
+
+/* Product detail gallery and clickable catalog image affordance */
+.product-visual[data-product]{cursor:pointer}
+.product-visual[data-product]:focus-visible{outline:3px solid #7c8ff5;outline-offset:3px}
+.photo-open-hint{position:absolute;right:10px;bottom:9px;padding:6px 9px;border-radius:8px;background:rgba(22,30,52,.78);color:#fff;font-size:9px;font-weight:800;opacity:0;transform:translateY(4px);transition:.2s;pointer-events:none}
+.product-visual[data-product]:hover .photo-open-hint,.product-visual[data-product]:focus-visible .photo-open-hint{opacity:1;transform:none}
+.product-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.product-gallery-item{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:13px;background:var(--white)}
+.product-gallery-item img{display:block;width:100%;height:auto;aspect-ratio:5/3;object-fit:contain;background:#f5f7fb}
+.product-gallery-item figcaption{display:grid;gap:5px;padding:12px 14px}
+.product-gallery-item figcaption b{font-size:11px;color:var(--ink)}
+.product-gallery-item figcaption span{font-size:9px;line-height:1.5;color:var(--muted)}
+body[data-theme="dark"] .product-gallery-item{background:#11101d;border-color:#302744}
+@media(max-width:760px){.product-gallery{grid-template-columns:1fr}.photo-open-hint{opacity:1;transform:none}}
