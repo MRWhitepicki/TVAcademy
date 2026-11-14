@@ -114,3 +114,6 @@ body[data-theme="dark"] .product-visual{background:#f7f8fb}
 .photo-credit a:hover{text-decoration:underline}
 
 /* Desktop and mobile catalog photos use the same contain sizing rule. */
+
+/* Slightly enlarge only the H55S85GUX catalog photo on all screen sizes. */
+.catalog-grid .product-visual-s85 img{transform:scale(1.12);}
