@@ -48,7 +48,7 @@ const catalog = [
 ];
 let state = JSON.parse(localStorage.getItem('tvAcademyState')||'null') || {name:'',completed:[],passedLevels:[],examCount:0,best:0,answers:0,correct:0};
 if(!Array.isArray(state.passedLevels))state.passedLevels=[];
-try{const separatelySaved=JSON.parse(localStorage.getItem('tvAcademyPassedLevels')||'[]');if(Array.isArray(separatelySaved))state.passedLevels=[...new Set([...state.passedLevels,...separatelySaved])]}catch(e){}
+try{const separatelySaved=JSON.parse(localStorage.getItem('tvAcademyPassedLevels')||'[]');if(Array.isArray(separatelySaved))state.passedLevels=[...new Set([...state.passedLevels,...separatelySaved])];if(state.best===100&&state.examCount>0&&!state.passedLevels.includes(0)){state.passedLevels.push(0);localStorage.setItem('tvAcademyPassedLevels',JSON.stringify(state.passedLevels))}}catch(e){}
 let settings = Object.assign({theme:'dark',animations:true,glow:true,sound:false},JSON.parse(localStorage.getItem('tvAcademySettings')||'{}'));
 function saveSettings(){localStorage.setItem('tvAcademySettings',JSON.stringify(settings));applySettings()}
 function applySettings(){const theme=settings.theme==='system'?(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):settings.theme;document.body.dataset.theme=theme;document.body.classList.toggle('no-animations',!settings.animations);document.body.classList.toggle('no-glow',!settings.glow)}
