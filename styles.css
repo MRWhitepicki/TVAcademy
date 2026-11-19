@@ -248,3 +248,9 @@ body.no-animations .haier-slide,body.no-animations .haier-orbit,body.no-animatio
 .level-card.passed .level-num{color:#20a86b;text-shadow:0 0 12px rgba(32,168,107,.38)}
 .level-status{display:inline-grid;place-items:center;width:23px;height:23px;margin-left:8px;border-radius:50%;background:#20a86b;color:#fff;font-size:15px;font-weight:900;box-shadow:0 0 12px rgba(32,168,107,.55);vertical-align:middle}
 .level-card.passed small{color:#15945d;font-weight:750}
+
+/* Keep passed state green even when the level is currently selected */
+.level-card.passed,.level-card.passed.active{border-color:#28b879!important;background:#10251e!important;color:#e4fff1!important;box-shadow:0 0 0 1px rgba(40,184,121,.3),0 0 22px rgba(40,184,121,.25)!important}
+.level-card.passed .level-num{color:#36d18b!important}
+.level-card.passed .level-status{background:#20a86b;color:#fff}
+.level-card.passed small{color:#36d18b!important}
